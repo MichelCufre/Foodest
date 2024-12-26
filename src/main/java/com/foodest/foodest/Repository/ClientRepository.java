@@ -1,4 +1,7 @@
 package com.foodest.foodest.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ClientRepository {
+import com.foodest.foodest.Classes.Client;
+
+public interface ClientRepository extends JpaRepository<Client, Long{
 }

@@ -13,18 +13,38 @@ public class Order {
     private Long id;
 
     private String desc;
-    private List<com.foodest.foodest.Classes.DTProduct> productList;
+    private List<Product> productList;
     private Double totalPrice;
     private Boolean status;
 
     @ManyToOne
     private User user;
 
-    public List<com.foodest.foodest.Classes.DTProduct> getProductList() {
+    public Order() {
+    }
+
+    public Order(User user, Boolean status, Double totalPrice, List<Product> productList, String desc, Long id) {
+        this.user = user;
+        this.status = status;
+        this.totalPrice = totalPrice;
+        this.productList = productList;
+        this.desc = desc;
+        this.id = id;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public List<Product> getProductList() {
         return productList;
     }
 
-    public void setProductList(List<com.foodest.foodest.Classes.DTProduct> productList) {
+    public void setProductList(List<Product> productList) {
         this.productList = productList;
     }
 

@@ -1,4 +1,7 @@
 package com.foodest.foodest.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface RestaurantRepository {
+import com.foodest.foodest.Classes.Restaurant;
+
+public interface RestaurantRepository extends JpaRepository<Restaurant, Long{
 }

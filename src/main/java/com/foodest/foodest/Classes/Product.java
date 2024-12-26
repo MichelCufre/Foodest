@@ -17,8 +17,19 @@ public class Product {
     private String imgUrl;
 
     @ManyToOne
-    private com.foodest.foodest.Classes.DTRestaurant restaurant;
+    private Restaurant restaurant;
 
+    public Product() {
+    }
+
+    public Product(Long id, String name, String desc, Double price, String imgUrl, Restaurant restaurant) {
+        this.id = id;
+        this.name = name;
+        this.desc = desc;
+        this.price = price;
+        this.imgUrl = imgUrl;
+        this.restaurant = restaurant;
+    }
 
     public Long getId() {
         return id;
