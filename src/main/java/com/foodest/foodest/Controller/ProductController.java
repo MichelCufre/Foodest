@@ -1,6 +1,7 @@
 package com.foodest.foodest.Controller;
 import com.foodest.foodest.Classes.Product;
 import com.foodest.foodest.Repository.ProductRepository;
+import com.foodest.foodest.Services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

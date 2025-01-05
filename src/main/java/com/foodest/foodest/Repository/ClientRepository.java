@@ -3,5 +3,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.foodest.foodest.Classes.Client;
 
-public interface ClientRepository extends JpaRepository<Client, Long{
+public interface ClientRepository extends JpaRepository<Client, Long>{
 }

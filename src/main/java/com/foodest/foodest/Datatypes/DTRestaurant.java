@@ -11,7 +11,4 @@ public class DTRestaurant {
     private Long id;
 
 
-    @ManyToOne
-    private DTRestaurant restaurant;
-
 }

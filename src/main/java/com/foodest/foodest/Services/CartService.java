@@ -1,10 +1,15 @@
 package com.foodest.foodest.Services;
+import com.foodest.foodest.Repository.CartRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.foodest.foodest.Repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 @Service
 public class CartService {
+
+    private CartRepository cartRepository;
+
     @Autowired
-    private UserRepository userRepository;
+    public CartService(CartRepository cartRepository) {
+        this.cartRepository = cartRepository;
+    }
 }

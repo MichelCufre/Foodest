@@ -16,7 +16,4 @@ public class DTProduct {
     private Double price;
     private String imgUrl;
 
-    @ManyToOne
-    private com.foodest.foodest.Classes.DTRestaurant restaurant;
-
 }

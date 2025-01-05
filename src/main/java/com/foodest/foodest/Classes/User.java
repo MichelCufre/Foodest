@@ -2,8 +2,9 @@ package com.foodest.foodest.Classes;
 import jakarta.persistence.*;
 import lombok.Data;
 
-@Data
+
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public class User {
 
     @Id
@@ -18,8 +19,7 @@ public class User {
     public User() {
     }
 
-    public User(Long id, String email, String name, String password, String imgUrl) {
-        this.id = id;
+    public User(String email, String name, String password, String imgUrl) {
         this.email = email;
         this.name = name;
         this.password = password;

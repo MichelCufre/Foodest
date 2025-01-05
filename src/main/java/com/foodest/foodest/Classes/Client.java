@@ -1,11 +1,15 @@
 package com.foodest.foodest.Classes;
 
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 import lombok.Data;
 
-@Data
+
 @Entity
 public class Client extends User{
+
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "cart_id", referencedColumnName = "userEmail")
+
     private Cart cart;
 
     public Client(Cart cart) {

@@ -13,14 +13,7 @@ public class DTOrder {
     private Long id;
 
     private String desc;
-    private List<com.foodest.foodest.Classes.DTProduct> productList;
     private Double totalPrice;
-
-    @OneToMany
-    private com.foodest.foodest.Classes.DTProduct product;
-
-    @OneToOne
-    private User user;
 
     public Long getId() {
         return id;

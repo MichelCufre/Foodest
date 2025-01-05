@@ -1,24 +1,34 @@
 package com.foodest.foodest.Classes;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.List;
 
-@Data
+
 @Entity
 public class Cart {
     @Id
     private String userEmail;
-    private List<Product> productList;
-    private Boolean totalPrice;
+
+    private Double totalPrice;
+
+    @OneToOne(mappedBy = "cart")
+    @JsonIgnore
+    private Client client;
+
+    @OneToMany(mappedBy = "cart", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Product> productList = new ArrayList<>();
 
     public Cart() {
     }
 
-    public Cart(String userEmail, Boolean totalPrice, List<Product> productList) {
+    public Cart(String userEmail, Double totalPrice, Client client, List<Product> productList) {
         this.userEmail = userEmail;
         this.totalPrice = totalPrice;
+        this.client = client;
         this.productList = productList;
     }
 
@@ -30,19 +40,13 @@ public class Cart {
         this.userEmail = userEmail;
     }
 
-    public List<Product> getProductList() {
-        return productList;
-    }
 
-    public void setProductList(List<Product> productList) {
-        this.productList = productList;
-    }
 
-    public Boolean getTotalPrice() {
+    public Double getTotalPrice() {
         return totalPrice;
     }
 
-    public void setTotalPrice(Boolean totalPrice) {
+    public void setTotalPrice(Double totalPrice) {
         this.totalPrice = totalPrice;
     }
 }

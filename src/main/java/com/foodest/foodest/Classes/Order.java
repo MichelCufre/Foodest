@@ -2,9 +2,10 @@ package com.foodest.foodest.Classes;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.List;
 
-@Data
+
 @Entity
 public class Order {
 
@@ -13,7 +14,8 @@ public class Order {
     private Long id;
 
     private String desc;
-    private List<Product> productList;
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Product> productList = new ArrayList<>();;
     private Double totalPrice;
     private Boolean status;
 

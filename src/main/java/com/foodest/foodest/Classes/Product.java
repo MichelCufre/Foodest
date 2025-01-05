@@ -3,7 +3,7 @@ package com.foodest.foodest.Classes;
 import jakarta.persistence.*;
 import lombok.Data;
 
-@Data
+
 @Entity
 public class Product {
 
@@ -17,18 +17,26 @@ public class Product {
     private String imgUrl;
 
     @ManyToOne
+    @JoinColumn(name = "cartId")
+    private Cart cart;
+
+    @ManyToOne
+    @JoinColumn(name = "restaurantId")
     private Restaurant restaurant;
 
+    @ManyToOne
+    @JoinColumn(name = "orderId")
+    private Order order;
     public Product() {
     }
 
-    public Product(Long id, String name, String desc, Double price, String imgUrl, Restaurant restaurant) {
-        this.id = id;
+    public Product(String name, String desc, Double price, String imgUrl, Restaurant restaurant, Cart cart) {
         this.name = name;
         this.desc = desc;
         this.price = price;
         this.imgUrl = imgUrl;
         this.restaurant = restaurant;
+        this.cart = cart;
     }
 
     public Long getId() {
