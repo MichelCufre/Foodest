@@ -1,5 +1,6 @@
 package com.foodest.foodest.Controller;
 import com.foodest.foodest.Classes.Product;
+import com.foodest.foodest.Classes.User;
 import com.foodest.foodest.Repository.ProductRepository;
 import com.foodest.foodest.Services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,4 +13,10 @@ import org.springframework.web.bind.annotation.*;
 public class ProductController {
     @Autowired
     private ProductService productService;
+
+    @PostMapping("/register")
+    public ResponseEntity<Product> createProductResponse(@RequestBody Product product) {
+        Product newProduct = productService.createProduct(product.getName(), product.getDesc(), product.getPrice(), product.getImgUrl(), product.getRestautant());
+        return ResponseEntity.ok(newProduct);
+    }
 }

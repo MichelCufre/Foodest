@@ -7,13 +7,14 @@ import java.util.List;
 
 
 @Entity
+@Table(name = "orders")
 public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String desc;
+    private String description;
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Product> productList = new ArrayList<>();;
     private Double totalPrice;
@@ -30,8 +31,17 @@ public class Order {
         this.status = status;
         this.totalPrice = totalPrice;
         this.productList = productList;
-        this.desc = desc;
+        this.description = desc;
         this.id = id;
+    }
+
+    public Order(Long id, String desc, List<Product> productList, Double totalPrice, Boolean status, User user) {
+        this.id = id;
+        this.description = desc;
+        this.productList = productList;
+        this.totalPrice = totalPrice;
+        this.status = status;
+        this.user = user;
     }
 
     public User getUser() {
@@ -51,11 +61,11 @@ public class Order {
     }
 
     public String getDesc() {
-        return desc;
+        return description;
     }
 
     public void setDesc(String desc) {
-        this.desc = desc;
+        this.description = desc;
     }
 
     public Double getTotalPrice() {

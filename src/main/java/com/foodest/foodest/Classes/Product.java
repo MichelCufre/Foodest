@@ -5,6 +5,7 @@ import lombok.Data;
 
 
 @Entity
+@Table(name = "products")
 public class Product {
 
     @Id
@@ -12,7 +13,7 @@ public class Product {
     private Long id;
 
     private String name;
-    private String desc;
+    private String description;
     private Double price;
     private String imgUrl;
 
@@ -30,13 +31,23 @@ public class Product {
     public Product() {
     }
 
-    public Product(String name, String desc, Double price, String imgUrl, Restaurant restaurant, Cart cart) {
+    public Product(String name, String desc, Double price, String imgUrl, Restaurant restaurant) {
         this.name = name;
-        this.desc = desc;
+        this.description = desc;
         this.price = price;
         this.imgUrl = imgUrl;
         this.restaurant = restaurant;
+    }
+
+    public Product(Long id, String name, String desc, Double price, String imgUrl, Cart cart, Restaurant restaurant, Order order) {
+        this.id = id;
+        this.name = name;
+        this.description = desc;
+        this.price = price;
+        this.imgUrl = imgUrl;
         this.cart = cart;
+        this.restaurant = restaurant;
+        this.order = order;
     }
 
     public Long getId() {
@@ -56,11 +67,11 @@ public class Product {
     }
 
     public String getDesc() {
-        return desc;
+        return description;
     }
 
     public void setDesc(String desc) {
-        this.desc = desc;
+        this.description = desc;
     }
 
     public Double getPrice() {
@@ -77,5 +88,29 @@ public class Product {
 
     public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl;
+    }
+
+    public Cart getCart() {
+        return cart;
+    }
+
+    public void setCart(Cart cart) {
+        this.cart = cart;
+    }
+
+    public Restaurant getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
     }
 }

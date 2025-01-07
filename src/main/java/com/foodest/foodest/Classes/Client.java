@@ -9,14 +9,13 @@ public class Client extends User{
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "cart_id", referencedColumnName = "userEmail")
-
     private Cart cart;
+
+    public Client() {
+    }
 
     public Client(Cart cart) {
         this.cart = cart;
-    }
-
-    public Client() {
     }
 
     public Cart getCart() {

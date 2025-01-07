@@ -15,6 +15,7 @@ public class User {
     protected String name;
     protected String password;
     protected String imgUrl;
+    private String type;
 
     public User() {
     }
@@ -25,6 +26,14 @@ public class User {
         this.password = password;
         this.imgUrl = imgUrl;
 
+    }
+
+    public User(Long id, String email, String name, String password, String imgUrl) {
+        this.id = id;
+        this.email = email;
+        this.name = name;
+        this.password = password;
+        this.imgUrl = imgUrl;
     }
 
     public String getEmail() {
@@ -66,4 +75,5 @@ public class User {
     public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl;
     }
+
 }

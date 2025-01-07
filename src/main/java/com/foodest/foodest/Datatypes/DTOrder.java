@@ -4,8 +4,7 @@ import lombok.Data;
 
 import java.util.List;
 
-@Data
-@Entity
+
 public class DTOrder {
 
     @Id

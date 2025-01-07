@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.foodest.foodest.Repository.UserRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class UserService {
 
@@ -14,7 +16,7 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public User createUser(String name, String email, String password, String imgUrl){
+    public User registerUser(String name, String email, String password, String imgUrl){
         User user = new User();
         if(!userRepository.existsByEmail(email)){
             user = new User(name, email, password, imgUrl);
@@ -22,5 +24,22 @@ public class UserService {
 
         }
         return user;
+    }
+
+    public void updateUser(Long id, User updatedUser){
+
+    }
+
+    public void deleteUser(Long id){
+        if(userRepository.existsById(id)){
+            userRepository.deleteById(id);
+        }
+    }
+
+    public Optional<User> getUserById(Long id){
+        if(userRepository.existsById(id)){
+            return userRepository.findById(id);
+        }
+        return null;
     }
 }
