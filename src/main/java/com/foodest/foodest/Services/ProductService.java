@@ -17,13 +17,13 @@ public class ProductService {
         this.productRepository = productRepository;
     }
 
-    public Product createProduct(String id, String name, String description, Double price, String imgUrl, Restaurant restaurant){
-        Product product = new Product();
-        if(!productRepository.existsById(id)){
-            product = new Product(name, description, price, imgUrl, restaurant);
+    public Product createProduct(String name, String description, Double price, String imgUrl, Restaurant restaurant){
+        if(!productRepository.existsByName(name)){
+            Product product = new Product(name, description, price, imgUrl, restaurant);
             productRepository.save(product);
+            return product;
         }
-        return product;
+        return null;
     }
 
     public List<Product> getAllProducts() {}

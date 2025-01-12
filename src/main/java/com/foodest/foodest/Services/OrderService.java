@@ -2,6 +2,7 @@ package com.foodest.foodest.Services;
 import com.foodest.foodest.Classes.Client;
 import com.foodest.foodest.Classes.Order;
 import com.foodest.foodest.Classes.Product;
+import com.foodest.foodest.Classes.User;
 import com.foodest.foodest.Repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,7 +23,7 @@ public class OrderService {
 
     public Order getOrderById(Long id) {}
 
-    public Order createOrder(Client client, List<Product> products, Double totalPrice) {}
+    public Order createOrder(User user, String description, Double totalPrice, List<Product> products, Boolean status) {}
 
     public Order updateOrder(Long id, List<Product> products, Double totalPrice) {}
 

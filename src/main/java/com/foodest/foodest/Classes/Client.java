@@ -14,7 +14,11 @@ public class Client extends User{
     public Client() {
     }
 
-    public Client(Cart cart) {
+    public Client(String email, String name, String password, String imgUrl, Cart cart) {
+        this.email = email;
+        this.name = name;
+        this.password = password;
+        this.imgUrl = imgUrl;
         this.cart = cart;
     }
 

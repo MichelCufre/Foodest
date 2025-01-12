@@ -31,23 +31,12 @@ public class Product {
     public Product() {
     }
 
-    public Product(String name, String desc, Double price, String imgUrl, Restaurant restaurant) {
+    public Product(String name, String description, Double price, String imgUrl, Restaurant restaurant) {
         this.name = name;
-        this.description = desc;
+        this.description = description;
         this.price = price;
         this.imgUrl = imgUrl;
         this.restaurant = restaurant;
-    }
-
-    public Product(Long id, String name, String desc, Double price, String imgUrl, Cart cart, Restaurant restaurant, Order order) {
-        this.id = id;
-        this.name = name;
-        this.description = desc;
-        this.price = price;
-        this.imgUrl = imgUrl;
-        this.cart = cart;
-        this.restaurant = restaurant;
-        this.order = order;
     }
 
     public Long getId() {

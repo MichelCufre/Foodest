@@ -26,23 +26,14 @@ public class Order {
     public Order() {
     }
 
-    public Order(User user, Boolean status, Double totalPrice, List<Product> productList, String desc, Long id) {
+    public Order(User user, String desc, Double totalPrice, List<Product> productList, Boolean status) {
         this.user = user;
         this.status = status;
         this.totalPrice = totalPrice;
         this.productList = productList;
         this.description = desc;
-        this.id = id;
     }
 
-    public Order(Long id, String desc, List<Product> productList, Double totalPrice, Boolean status, User user) {
-        this.id = id;
-        this.description = desc;
-        this.productList = productList;
-        this.totalPrice = totalPrice;
-        this.status = status;
-        this.user = user;
-    }
 
     public User getUser() {
         return user;

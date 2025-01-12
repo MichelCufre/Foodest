@@ -15,8 +15,10 @@ public class ProductController {
     private ProductService productService;
 
     @PostMapping("/register")
-    public ResponseEntity<Product> createProductResponse(@RequestBody Product product) {
-        Product newProduct = productService.createProduct(product.getName(), product.getDesc(), product.getPrice(), product.getImgUrl(), product.getRestautant());
-        return ResponseEntity.ok(newProduct);
+    public ResponseEntity<Product> registerProduct(@RequestBody Product product) {
+        Product newProduct = productService.createProduct(product.getName(), product.getDesc(), product.getPrice(), product.getImgUrl(), product.getRestaurant());
+        return ResponseEntity.status(HttpStatus.CREATED).body(newProduct);
     }
+
+
 }

@@ -24,5 +24,7 @@ public class CartService {
 
     public Cart updateCart(Long id, List<Product> products) {}
 
-    public void deleteCart(Long id) {}
+    public void deleteCart(Long id) {
+        cartRepository.deleteById(id);
+    }
 }

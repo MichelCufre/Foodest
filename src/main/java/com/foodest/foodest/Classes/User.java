@@ -3,7 +3,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 
-@Entity
+@MappedSuperclass
 @Inheritance(strategy = InheritanceType.JOINED)
 public class User {
 
@@ -26,14 +26,6 @@ public class User {
         this.password = password;
         this.imgUrl = imgUrl;
 
-    }
-
-    public User(Long id, String email, String name, String password, String imgUrl) {
-        this.id = id;
-        this.email = email;
-        this.name = name;
-        this.password = password;
-        this.imgUrl = imgUrl;
     }
 
     public String getEmail() {
