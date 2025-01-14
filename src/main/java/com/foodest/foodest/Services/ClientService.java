@@ -14,27 +14,41 @@ public class ClientService {
 
     @Autowired
     public ClientService(ClientRepository clientRepository) {
-        this.clientRepository = clientRepository;
+        ClientService.clientRepository = clientRepository;
     }
 
-    public static Client registerClient(String name, String email, String password, String imgUrl, Cart cart) {
+    public static Client registerClient(String name, String email, String password, String imgUrl) {
         // Verificar si el cliente ya existe por email
         if (clientRepository.existsByEmail(email)) {
             throw new IllegalArgumentException("Client with email " + email + " already exists!");
         }
 
         // Crear y guardar el nuevo cliente
-        Client client = new Client(name, email, password, imgUrl, cart);
+        Client client = new Client(name, email, password, imgUrl);
         return clientRepository.save(client);
     }
 
-    public List<Client> getAllClients() {}
+    public List<Client> getAllClients() {
+        return clientRepository.findAll();
+    }
 
-    public Client getClientById(Long id) {}
+    public Client getClientByEmail(String email) {
+        return clientRepository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("Client not found with email: " + email));
+    }
 
-    public Client createClient(String name, String email, String password, String imgUrl, String phoneNumber) {}
+    public void updateClient(String name, String email, String password, String imgUrl) {
+        Client client = clientRepository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("Client not found with email: " + email));
 
-    public Client updateClient(Long id, String name, String email, String password, String imgUrl, String phoneNumber) {}
+        //Seteo de datos nuevos
+        client.setName(name);
+        client.setEmail(email);
+        client.setPassword(password);
+        client.setImgUrl(imgUrl);
+    }
 
-    public void deleteClient(Long id) {}
+    public void deleteClient(String email) {
+        clientRepository.deleteByEmail(email);
+    }
 }

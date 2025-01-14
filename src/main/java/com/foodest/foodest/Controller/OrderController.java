@@ -17,11 +17,11 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
-    @PostMapping("/register")
-    public ResponseEntity<Order> createRestaurantResponse(@RequestBody Order order) {
-        Order newOrder = orderService.createOrder(order.getUser(), order.getDesc(), order.getTotalPrice(), order.getProductList(),order.getStatus());
-        return ResponseEntity.ok(newOrder);
-    }
+//    @PostMapping("/register")
+//    public ResponseEntity<Order> createRestaurantResponse(@RequestBody Order order) {
+//        Order newOrder = orderService.createOrder(order.getUser(), order.getDesc(), order.getTotalPrice(), order.getProductList(),order.getStatus());
+//        return ResponseEntity.ok(newOrder);
+//    }
 
     @GetMapping
     public ResponseEntity<List<Order>> getAllRestaurants() {

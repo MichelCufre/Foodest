@@ -27,17 +27,16 @@ public class RestaurantService {
 
         // Crear y guardar el nuevo restaurante
         Restaurant restaurant = new Restaurant(name, email, password, imgUrl, productStock);
-        return restaurantRepository.save(restaurant);
+        restaurantRepository.save(restaurant);
+        return restaurant;
     }
 
     public void addProductToStock(String email, Product product) {
-        if(restaurantRepository.existsByEmail(email)){
-            Restaurant restaurant = restaurantRepository.findByEmail(email)
-                .orElseThrow(() -> new RuntimeException("Restaurant not found with email: " + email));
-            if(!productRepository.existsByName(product.getName())){
-                restaurant.getProductStock().add(product);
-                restaurantRepository.save(restaurant);
-            }
+        Restaurant restaurant = restaurantRepository.findByEmail(email)
+            .orElseThrow(() -> new RuntimeException("Restaurant not found with email: " + email));
+        if(!productRepository.existsByName(product.getName())){
+            restaurant.getProductStock().add(product);
+            restaurantRepository.save(restaurant);
         }
     }
 
@@ -71,7 +70,9 @@ public class RestaurantService {
         if(restaurantRepository.existsByEmail(email)){
             Restaurant restaurant = restaurantRepository.findByEmail(email)
                     .orElseThrow(() -> new RuntimeException("Restaurant not found with email: " + email));
+            return restaurant.getProductStock();
         }
+        return null;
     }
 
     public List<Restaurant> getAllRestaurants() {

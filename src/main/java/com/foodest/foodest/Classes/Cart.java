@@ -12,7 +12,6 @@ import java.util.List;
 public class Cart {
     @Id
     private String userEmail;
-
     private Double totalPrice;
 
     @OneToOne(mappedBy = "cart")
@@ -23,13 +22,14 @@ public class Cart {
     private List<Product> productList = new ArrayList<>();
 
     public Cart() {
+
     }
 
-    public Cart(String userEmail, Double totalPrice, Client client, List<Product> productList) {
-        this.userEmail = userEmail;
+    public Cart(Double totalPrice, Client client, List<Product> productList) {
         this.totalPrice = totalPrice;
         this.client = client;
         this.productList = productList;
+        userEmail = client.getEmail();
     }
 
     public String getUserEmail() {
@@ -40,13 +40,23 @@ public class Cart {
         this.userEmail = userEmail;
     }
 
-
-
     public Double getTotalPrice() {
         return totalPrice;
     }
 
     public void setTotalPrice(Double totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public List<Product> getProductList() {
+        return productList;
+    }
+
+    public void setProductList(List<Product> productList) {
+        this.productList = productList;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
     }
 }

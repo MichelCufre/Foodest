@@ -18,7 +18,7 @@ public class ClientController {
 
     @PostMapping("/register")
     public ResponseEntity<Client> createClientResponse(@RequestBody Client client) {
-        Client newClient = ClientService.registerClient(client.getName(),client.getEmail(),client.getPassword(),client.getImgUrl(), client.getCart());
+        Client newClient = ClientService.registerClient(client.getName(),client.getEmail(),client.getPassword(),client.getImgUrl());
         return ResponseEntity.ok(newClient);
     }
 
@@ -27,8 +27,8 @@ public class ClientController {
         return ResponseEntity.ok(clientService.getAllClients());
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Client> getClientById(@PathVariable Long id) {
-        return ResponseEntity.ok(clientService.getClientById(id));
+    @GetMapping("/{email}")
+    public ResponseEntity<Client> getClientById(@PathVariable String email) {
+        return ResponseEntity.ok(clientService.getClientByEmail(email));
     }
 }
