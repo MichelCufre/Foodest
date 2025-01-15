@@ -31,4 +31,17 @@ public class ClientController {
     public ResponseEntity<Client> getClientByEmail(@PathVariable String email) {
         return ResponseEntity.ok(clientService.getClientByEmail(email));
     }
+
+    @GetMapping("/{email}/update")
+    public ResponseEntity<String> updateClient(@PathVariable String email,
+    @RequestBody String name, String password, String imgUrl) {
+        clientService.updateClient(name, email, password, imgUrl);
+        return ResponseEntity.ok("Client updated successfully!");
+    }
+
+    @GetMapping("/{email}/delete")
+    public ResponseEntity<String> deleteClient(@PathVariable String email) {
+        clientService.deleteClient(email);
+        return ResponseEntity.ok("Client deleted successfully!");
+    }
 }
