@@ -79,8 +79,8 @@ public class RestaurantService {
         return restaurantRepository.findAll();
     }
 
-    public Restaurant getRestaurantById(Long id) {
-        return restaurantRepository.findById(id)
-            .orElseThrow(() -> new RuntimeException("Restaurant not found with id: " + id));
+    public Restaurant getRestaurantByEmail(String email) {
+        return restaurantRepository.findByEmail(email)
+            .orElseThrow(() -> new RuntimeException("Restaurant not found with email: " + email));
     }
 }

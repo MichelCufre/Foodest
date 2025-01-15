@@ -28,7 +28,7 @@ public class ClientController {
     }
 
     @GetMapping("/{email}")
-    public ResponseEntity<Client> getClientById(@PathVariable String email) {
+    public ResponseEntity<Client> getClientByEmail(@PathVariable String email) {
         return ResponseEntity.ok(clientService.getClientByEmail(email));
     }
 }

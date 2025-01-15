@@ -1,11 +1,7 @@
 package com.foodest.foodest.Controller;
 import com.foodest.foodest.Classes.Order;
-import com.foodest.foodest.Classes.Restaurant;
-import com.foodest.foodest.Repository.OrderRepository;
 import com.foodest.foodest.Services.OrderService;
-import com.foodest.foodest.Services.RestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,12 +20,12 @@ public class OrderController {
 //    }
 
     @GetMapping
-    public ResponseEntity<List<Order>> getAllRestaurants() {
+    public ResponseEntity<List<Order>> getAllOrders() {
         return ResponseEntity.ok(orderService.getAllOrders());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Order> getRestaurantById(@PathVariable Long id) {
+    public ResponseEntity<Order> getOrderById(@PathVariable Long id) {
         return ResponseEntity.ok(orderService.getOrderById(id));
     }
 }

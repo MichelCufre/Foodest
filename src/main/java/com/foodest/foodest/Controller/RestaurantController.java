@@ -1,5 +1,6 @@
 package com.foodest.foodest.Controller;
 import com.foodest.foodest.Classes.Client;
+import com.foodest.foodest.Classes.Product;
 import com.foodest.foodest.Classes.Restaurant;
 import com.foodest.foodest.Repository.RestaurantRepository;
 import com.foodest.foodest.Services.ClientService;
@@ -28,8 +29,34 @@ public class RestaurantController {
         return ResponseEntity.ok(restaurantService.getAllRestaurants());
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Restaurant> getRestaurantById(@PathVariable Long id) {
-        return ResponseEntity.ok(restaurantService.getRestaurantById(id));
+    @PostMapping("/{email}/add-product")
+    public ResponseEntity<String> addProductToRestaurantStock(
+            @PathVariable String email,
+            @RequestBody Product product) {
+        restaurantService.addProductToStock(email, product);
+        return ResponseEntity.ok("Product added to restaurant stock successfully!");
+    }
+
+    @PostMapping("/{email}/remove-product")
+    public ResponseEntity<String> removeProductToRestaurantStock(
+            @PathVariable String email,
+            @RequestBody Product product) {
+        restaurantService.removeProductFromStock(email, product);
+        return ResponseEntity.ok("Product removed from restaurant stock successfully!");
+    }
+
+    @PostMapping("/{email}/update-product")
+    public ResponseEntity<String> updateProductFromRestaurantStock(
+            @PathVariable String email,
+            @RequestBody String productName,
+            @RequestBody Product product) {
+        restaurantService.updateProductInStock(email, productName, product);
+        return ResponseEntity.ok("Product updated from restaurant stock successfully!");
+    }
+
+    @PostMapping("/{email}/get-stock")
+    public ResponseEntity<List<Product>> getRestaurantStock(
+            @PathVariable String email) {
+        return ResponseEntity.ok(restaurantService.getProductStock(email));
     }
 }
