@@ -4,7 +4,6 @@ import lombok.Data;
 
 
 @MappedSuperclass
-@Inheritance(strategy = InheritanceType.JOINED)
 public class User {
 
     @Id

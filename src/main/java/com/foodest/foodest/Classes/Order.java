@@ -21,13 +21,13 @@ public class Order {
     private Boolean status;
 
     @ManyToOne
-    private User user;
+    private Client client;
 
     public Order() {
     }
 
-    public Order(User user, String desc, Double totalPrice, List<Product> productList, Boolean status) {
-        this.user = user;
+    public Order(Client client, String desc, Double totalPrice, List<Product> productList, Boolean status) {
+        this.client = client;
         this.status = status;
         this.totalPrice = totalPrice;
         this.productList = productList;
@@ -35,12 +35,8 @@ public class Order {
     }
 
 
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
+    public User getClient() {
+        return client;
     }
 
     public List<Product> getProductList() {

@@ -8,7 +8,7 @@ import lombok.Data;
 public class Client extends User{
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "cart_id", referencedColumnName = "userEmail")
+    @JoinColumn(name = "cart_id", referencedColumnName = "email")
     private Cart cart;
 
     public Client() {

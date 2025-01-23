@@ -29,6 +29,11 @@ public class RestaurantController {
         return ResponseEntity.ok(restaurantService.getAllRestaurants());
     }
 
+    @GetMapping("/{email}")
+    public ResponseEntity<Restaurant> getRestaurantByEmail(@PathVariable String email) {
+        return ResponseEntity.ok(restaurantService.getRestaurantByEmail(email));
+    }
+
     @PostMapping("/{email}/add-product")
     public ResponseEntity<String> addProductToRestaurantStock(
             @PathVariable String email,

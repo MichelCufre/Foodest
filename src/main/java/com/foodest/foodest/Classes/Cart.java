@@ -11,7 +11,7 @@ import java.util.List;
 @Entity
 public class Cart {
     @Id
-    private String userEmail;
+    private String email;
     private Double totalPrice;
 
     @OneToOne(mappedBy = "cart")
@@ -29,15 +29,15 @@ public class Cart {
         this.totalPrice = totalPrice;
         this.client = client;
         this.productList = productList;
-        userEmail = client.getEmail();
+        email = client.getEmail();
     }
 
     public String getUserEmail() {
-        return userEmail;
+        return email;
     }
 
     public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
+        this.email = userEmail;
     }
 
     public Double getTotalPrice() {
